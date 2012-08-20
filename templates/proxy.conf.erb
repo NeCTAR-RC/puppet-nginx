@@ -20,8 +20,8 @@ server {
     
     <% if ssl %>
     ssl on;
-    ssl_certificate /etc/nginx/ssl/cert.pem;
-    ssl_certificate_key /etc/nginx/ssl/key.pem;
+    ssl_certificate <%= ssl_cert_path %>;
+    ssl_certificate_key <%= ssl_key_path %>;
 
     ssl_session_timeout 5m;
 
