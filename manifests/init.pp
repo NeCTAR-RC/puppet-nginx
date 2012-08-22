@@ -9,7 +9,7 @@ class nginx {
     require => Package['nginx'],
   }
 
-  define proxy( $port, $upstreams, $ssl=false, $timeout=15 ) {
+  define proxy( $port, $upstreams, $ssl=false, $timeout=15, $nagios_check=true) {
 
     file { "/etc/nginx/sites-available/${name}.conf":
       ensure  => present,
@@ -22,6 +22,19 @@ class nginx {
       ensure => link,
       target => "/etc/nginx/sites-available/${name}.conf",
       notify => Service['nginx'],
+    }
+
+    if $nagios_check {
+      if $ssl {
+        nagios::service { "http_${port}":
+          check_command => "https_port!${port}";
+        }
+      }
+      else {
+        nagios::service { "http_${port}":
+          check_command => "http_port!${port}";
+        }
+      }
     }
   }
 
