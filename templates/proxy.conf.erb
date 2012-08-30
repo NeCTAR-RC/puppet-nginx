@@ -31,12 +31,7 @@ server {
     ssl_session_cache       shared:TLSSL:16m;   
     <% end %>    
 
-    client_max_body_size 20G;
-    client_body_buffer_size 2M;
-    proxy_buffer_size    16k;
-    proxy_buffers        32   16k;
-    #proxy_buffer_size = 2M;
-    #proxy_buffers = 8 2M;
+    client_max_body_size 5G;
 
     location / {
         proxy_pass http://<%= name %>; 
