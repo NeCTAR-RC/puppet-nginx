@@ -16,12 +16,13 @@ Define a proxy
 Eg. For openstack api do:
 
 
-  nginx::proxy { 'osapi':
-    port         => 8774,
-    ssl          => true,
-    upstreams    => ['api-1:18774', 'api-2:18774', 'api-3:18774'],
-    nagios_check => false,
-  }
+    nginx::proxy { 'osapi':
+        port         => 8774,
+        ssl          => true,
+        upstreams    => ['api-1:18774', 'api-2:18774', 'api-3:18774'],
+        nagios_check => false,
+    }
+
 
 
 
