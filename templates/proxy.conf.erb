@@ -20,7 +20,7 @@ server {
     
     <% if ssl %>
     ssl on;
-    ssl_certificate <%= ssl_cert_path %>;
+    ssl_certificate <%= ssl_certcombined_path %>;
     ssl_certificate_key <%= ssl_key_path %>;
 
     ssl_session_timeout 5m;
