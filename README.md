@@ -1,6 +1,7 @@
 Nginx puppet
 ============
 
+Note this installs nginx-extras which has additional modules enabled
 
 Variables
 ---------
@@ -24,6 +25,10 @@ Eg. For openstack api do:
     }
 
 
+Optional proxy settings
+-----------------------
+ * client_timeout - default 60s
+ * chunking - Use the chunking module
 
 
 
