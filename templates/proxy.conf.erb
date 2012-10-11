@@ -32,6 +32,7 @@ server {
     <% end %>    
 
     client_max_body_size 5G;
+    client_body_timeout <%= client_timeout %>;
 
     location / {
         proxy_pass http://<%= name %>; 
