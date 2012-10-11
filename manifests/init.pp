@@ -1,7 +1,8 @@
 class nginx {
 
-  package { 'nginx':
+  package { 'nginx-extras':
     ensure => installed,
+    alias  => 'nginx',
   }
 
   service { 'nginx':
@@ -9,7 +10,7 @@ class nginx {
     require => Package['nginx'],
   }
 
-  define proxy( $port, $upstreams, $ssl=false, $client_timeout='60s', $nagios_check=true) {
+  define proxy( $port, $upstreams, $ssl=false, $client_timeout='60s', $nagios_check=true, $chunking=false) {
 
     file { "/etc/nginx/sites-available/${name}.conf":
       ensure  => present,

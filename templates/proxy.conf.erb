@@ -34,6 +34,14 @@ server {
     client_max_body_size 5G;
     client_body_timeout <%= client_timeout %>;
 
+    <% if chunking %>
+    chunkin on;
+    error_page 411 = @my_411_error;
+    location @my_411_error {
+        chunkin_resume;
+    }
+    <% end %>
+
     location / {
         proxy_pass http://<%= name %>; 
         proxy_set_header X-Real-IP $remote_addr;
