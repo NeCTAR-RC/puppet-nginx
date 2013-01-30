@@ -52,7 +52,9 @@ server {
     location /nginx_status {
         stub_status on;
         access_log off;
-        allow <%= nagios_host %>;
+        <%- nagios_hosts.each do |server| -%>
+        allow <%= server %>;
+        <% end -%>
         <%- admin_hosts.each do |server| -%>
         allow <%= server %>;
         <% end -%>
