@@ -1,12 +1,32 @@
-Nginx puppet
+puppet-nginx
 ============
 
 Note this installs nginx-extras which has additional modules enabled
 
 Variables
 ---------
-ssl_cert_path - where on the filesystem the ssl cert lives
-ssl_key_path  - where on the filesystem the ssl key lives
+
+ * admin_hosts 
+ * chunking 
+ * fqdn 
+ * name 
+ * port 
+ * server 
+ * ssl 
+ * upstreams 
+
+Client
+
+ * client_timeout 
+
+Nagios
+
+ * nagios_hosts 
+
+SSL
+
+ * ssl_certcombined_path 
+ * ssl_key_path 
 
 Note: If you tag these resources with 'sslcert' nginx will be restarted if these change.
 
