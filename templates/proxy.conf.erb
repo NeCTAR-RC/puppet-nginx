@@ -17,8 +17,8 @@ server {
 
     access_log  /var/log/nginx/access.log;
     access_log  /var/log/nginx/upstream.log <%= name %>-upstream_log;
-    
-    <% if ssl %>
+
+<% if ssl %>
     ssl on;
     ssl_certificate <%= ssl_certcombined_path %>;
     ssl_certificate_key <%= ssl_key_path %>;
@@ -28,22 +28,22 @@ server {
     ssl_protocols SSLv3 TLSv1;
     ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
     ssl_prefer_server_ciphers on;
-    ssl_session_cache       shared:TLSSL:16m;   
-    <% end %>    
+    ssl_session_cache       shared:TLSSL:16m;
+<% end -%>
 
     client_max_body_size 5G;
     client_body_timeout <%= client_timeout %>;
 
-    <% if chunking %>
+<% if chunking %>
     chunkin on;
     error_page 411 = @my_411_error;
     location @my_411_error {
         chunkin_resume;
     }
-    <% end %>
+<% end -%>
 
-    location / {
-        proxy_pass http://<%= name %>; 
+    location /<%= path %> {
+        proxy_pass http://<%= name %>;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host $http_host;
@@ -52,12 +52,12 @@ server {
     location /nginx_status {
         stub_status on;
         access_log off;
-        <%- nagios_hosts.each do |server| -%>
+<%- nagios_hosts.each do |server| -%>
         allow <%= server %>;
-        <% end -%>
-        <%- admin_hosts.each do |server| -%>
+<% end -%>
+<%- admin_hosts.each do |server| -%>
         allow <%= server %>;
-        <% end -%>
+<% end -%>
         deny all;
     }
 }
