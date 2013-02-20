@@ -10,7 +10,7 @@ class nginx {
     require => Package['nginx'],
   }
 
-  define proxy( $port, $upstreams, $ssl=false, $client_timeout='60s', $nagios_check=true, $chunking=false) {
+  define proxy( $port, $upstreams, $ssl=false, $client_timeout='60s', $nagios_check=true, $chunking=false, $path='/') {
 
     file { "/etc/nginx/sites-available/${name}.conf":
       ensure  => present,
