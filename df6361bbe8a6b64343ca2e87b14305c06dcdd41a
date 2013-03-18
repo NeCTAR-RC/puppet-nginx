@@ -1,0 +1,8 @@
+Change-Id: Idf6361bbe8a6b64343ca2e87b14305c06dcdd41a
+Code-Review+2: Sam Morrison <sam.morrison@unimelb.edu.au>
+Verified+1: Jenkins <rc-melbourne@nectar.org.au>
+Submitted-by: Sam Morrison <sam.morrison@unimelb.edu.au>
+Submitted-at: Mon, 18 Mar 2013 14:12:30 +1100
+Reviewed-on: https://review.rc.nectar.org.au/226
+Project: NeCTAR-RC/puppet-nginx
+Branch: refs/heads/production
