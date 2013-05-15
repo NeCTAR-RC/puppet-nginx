@@ -12,6 +12,9 @@ class nginx {
 
   define proxy( $port, $upstreams, $ssl=false, $client_timeout='60s', $nagios_check=true, $chunking=false, $path='/') {
 
+    $admin_hosts = hiera('iptables_templates::admin_hosts', [])
+    $nagios_hosts = hiera('nagios::hosts', [])
+
     file { "/etc/nginx/sites-available/${name}.conf":
       ensure  => present,
       content => template('nginx/proxy.conf.erb'),
