@@ -59,5 +59,13 @@ class nginx {
     notify  => Service['nginx'],
     require => Package['nginx'],
   }
+  
+  file {'/etc/nginx/sites-available':
+    ensure  => directory,
+    recurse => true,
+    purge   => true,
+    force   => true,
+    require => Package['nginx'],
+  }
 
 }
