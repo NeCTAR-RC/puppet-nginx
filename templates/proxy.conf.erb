@@ -58,7 +58,7 @@ server {
 <%- admin_hosts.each do |server| -%>
         allow <%= server %>;
 <% end -%>
-		allow 127.0.0.1;
+        allow 127.0.0.1;
         deny all;
     }
 }
