@@ -28,6 +28,12 @@ class nginx {
       notify => Service['nginx'],
     }
 
+    firewall { "100 ${name}":
+      dport  => $port,
+      proto  => tcp,
+      action => accept,
+    }
+
     if $nagios_check {
       if $ssl {
         nagios::service { "http_${port}":
