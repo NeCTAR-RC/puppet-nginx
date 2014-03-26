@@ -1,8 +1,7 @@
 class nginx {
 
-  package { 'nginx-extras':
+  package { 'nginx':
     ensure => installed,
-    alias  => 'nginx',
   }
 
   service { 'nginx':
